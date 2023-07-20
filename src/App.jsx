@@ -8,7 +8,8 @@ const App = () => {
     const [name, setName] = useState("");
 
     useEffect(() => {
-        listUsers(`${apiURL}/users`)},
+        listUsers(`${apiURL}/users`)
+    },
         // eslint-disable-next-line react-hooks/exhaustive-deps
         [])
 
@@ -26,25 +27,23 @@ const App = () => {
             .then((responseJson) => {
                 setUsers(responseJson)
             })
-        }
+    }
 
     const handleSubmit = e => {
         e.preventDefault();
         const user = {
             name
         }
-    const url = `${apiURL}/users`
-    const options = {
-        method: 'POST',
-        body: JSON.stringify(user),
-        headers: {
-            'Content-Type': 'application/json'
-           }
-          }
+        const url = `${apiURL}/users`
+        const options = {
+            method: 'POST',
+            body: JSON.stringify(user),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
         createUser(url, options)
     }
-    
-
 
 
     const createUser = (url, options) => {
@@ -58,7 +57,6 @@ const App = () => {
                     setName('')
                 }
             })
-        
     }
 
     const handleDelete = id => {
@@ -81,10 +79,10 @@ const App = () => {
                 console.log(responseJson)
                 listUsers(`${apiURL}/users`)
             })
-            
-            
+
+
     }
-return (
+    return (
         <>
             <div className="container">
                 <div className="row">
@@ -92,7 +90,13 @@ return (
                         <h3>Create User</h3>
                         <form onSubmit={handleSubmit}>
                             <div className="input-group">
-                                <input type="text" className="form-control" placeholder="Insert Name..." value={name} onChange={(e) => setName(e.target.value)} />
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Insert Name..."
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                />
                                 <button className="btn btn-primary">Create</button>
                             </div>
                         </form>
@@ -101,14 +105,14 @@ return (
                         <h3>Users List({users?.length || 0})</h3>
                         <ul className="list-group">
                             {
-                            !!users &&
-                            users.length > 0 &&
-                            users.map((user) => {
-                                return (
-                                    <li key={user.id} className="list-group-item d-flex justify-content-between">
-                                        <span>{user.name}</span>
-                                        <span><MdDeleteForever size={24} onClick={() => handleDelete(user.id)} /></span>
-                                    </li>
+                                !!users &&
+                                users.length > 0 &&
+                                users.map((user) => {
+                                    return (
+                                        <li key={user.id} className="list-group-item d-flex justify-content-between">
+                                            <span>{user.name}</span>
+                                            <span><MdDeleteForever size={24} onClick={() => handleDelete(user.id)} /></span>
+                                        </li>
                                     )
                                 })
                             }
@@ -117,6 +121,7 @@ return (
                 </div>
             </div>
         </>
-    )}
-                        
+    )
+}
+
 export default App;
