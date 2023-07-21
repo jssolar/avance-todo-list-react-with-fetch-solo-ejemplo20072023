@@ -1,0 +1,13 @@
+body {
+  display: flex;
+  place-content: center;
+  background-color: rgb(13, 10, 39);
+  color: rgb(179, 179, 230);
+}
+
+.container {
+  background-color: grey;
+  border-radius: 15px;
+  display: flex;
+  
+}

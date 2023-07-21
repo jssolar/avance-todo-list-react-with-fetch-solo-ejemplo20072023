@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { MdDeleteForever } from 'react-icons/md'
+import './App.css'
+
 
 const App = () => {
 
